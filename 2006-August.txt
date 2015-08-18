@@ -1,0 +1,179 @@
+From paul_c at tuxcnc.org  Sun Aug 20 23:49:20 2006
+From: paul_c at tuxcnc.org (Paul)
+Date: Sun, 20 Aug 2006 22:49:20 +0100
+Subject: [Rack-core] Compiling/running RACK on Debian
+Message-ID: <200608202249.20905.paul_c@tuxcnc.org>
+
+
+Hi Folks (& Jan in particular)
+
+As per your suggestion, I checked out the trunk of SVN and proceeded to 
+compile & install RACK - Noticed that the AC_INIT_MAKE does a check for AWK, 
+so one chunk of the patch I emailed earlier is redundant.. Attached, is an 
+updated one.
+
+ Aside from the issues that the patch addresses, I'm getting an error:
+
+paul at Babylon5:/usr/local/rack/gui$ java -jar rack.jar gui.cfg
+Exception in thread "main" java.lang.NoClassDefFoundError: rack/gui/Gui
+
+when trying to run the GUI example - I know very little about java in general, 
+and nothing about j2re-1.4.2 in particular (also have the j2sdk from 
+Blackdown installed). At a loss as to where to start debugging this, so any 
+pointers would be much appreciated.
+
+
+Regards, Paul.
+
+
+
+P.S. After some brutal hacks to configure, managed to compile TiMS and a few 
+of the user space libraries on a powerpc (the java stuff didn't like kaffe).
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: rack-0.3.0.diff
+Type: text/x-diff
+Size: 1212 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060820/49be2250/attachment.diff>
+
+From kiszka at rts.uni-hannover.de  Mon Aug 21 12:32:07 2006
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Mon, 21 Aug 2006 12:32:07 +0200
+Subject: [Rack-core] Compiling/running RACK on Debian
+In-Reply-To: <200608202249.20905.paul_c@tuxcnc.org>
+References: <200608202249.20905.paul_c@tuxcnc.org>
+Message-ID: <44E98BA7.7000509@rts.uni-hannover.de>
+
+Paul wrote:
+> Hi Folks (& Jan in particular)
+> 
+> As per your suggestion, I checked out the trunk of SVN and proceeded to 
+> compile & install RACK - Noticed that the AC_INIT_MAKE does a check for AWK, 
+> so one chunk of the patch I emailed earlier is redundant.. Attached, is an 
+> updated one.
+
+Thanks, merged.
+
+I also tried to address your concerns about uninstalling and cleaned up
+a duplicate installation of the map file at this chance. All committed
+to SVN now. It's heavily untested, so please give it a careful try. :)
+
+> 
+>  Aside from the issues that the patch addresses, I'm getting an error:
+> 
+> paul at Babylon5:/usr/local/rack/gui$ java -jar rack.jar gui.cfg
+> Exception in thread "main" java.lang.NoClassDefFoundError: rack/gui/Gui
+
+Did you enable CONFIG_RACK_JAVA_GUI? Oli just turned this to "default y"
+to make sure no one misses it.
+
+> 
+> when trying to run the GUI example - I know very little about java in general, 
+> and nothing about j2re-1.4.2 in particular (also have the j2sdk from 
+> Blackdown installed). At a loss as to where to start debugging this, so any 
+> pointers would be much appreciated.
+
+Java 1.4 should not be the problem, some of our installations are based
+on it as well.
+
+> 
+> 
+> Regards, Paul.
+> 
+> 
+> 
+> P.S. After some brutal hacks to configure, managed to compile TiMS and a few 
+> of the user space libraries on a powerpc (the java stuff didn't like kaffe).
+
+I copied some arch detections from RTnet to RACK. Let us know if this is
+already enough to get it compiling.
+
+Thanks for all feedback,
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060821/b08a3ff2/attachment.pgp>
+
+From kiszka at rts.uni-hannover.de  Mon Aug 21 15:23:23 2006
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Mon, 21 Aug 2006 15:23:23 +0200
+Subject: [Rack-core] Compiling/running RACK on Debian
+In-Reply-To: <200608211314.19706.paul_c@tuxcnc.org>
+References: <200608202249.20905.paul_c@tuxcnc.org>
+	<44E98BA7.7000509@rts.uni-hannover.de>
+	<200608211314.19706.paul_c@tuxcnc.org>
+Message-ID: <44E9B3CB.1050808@rts.uni-hannover.de>
+
+Paul wrote:
+> Hi Jan
+> 
+> On Monday 21 August 2006 11:32, Jan Kiszka wrote:
+>> I also tried to address your concerns about uninstalling and cleaned up
+>> a duplicate installation of the map file at this chance. All committed
+>> to SVN now. It's heavily untested, so please give it a careful try. :)
+> 
+> A small typo in the uninstall-local, but once fixed (patch attached), 
+> uninstall removed all the files. Still leaves a whole bunch of empty 
+> directories, but that isn't a high priority - `rm -fR /usr/local/rack` cleans 
+> it out for me ;)
+
+Ah, yeah. The directory stuff will be addressed once we restructure the
+installation (then most dirs will be common, thus undeletable anyway).
+
+> 
+> Side note: I found some shells to be picky about spaces either side of a 
+> semicolon when used as a delimiter.
+
+Already tried to build RTnet on some of those systems? I wonder if it
+suffers from that as well...
+
+> 
+>> Did you enable CONFIG_RACK_JAVA_GUI? Oli just turned this to "default y"
+>> to make sure no one misses it.
+> 
+> All the java options are enabled - Digging a little deeper, I found the 
+> problem. In the rack.jar target, `find -H rack/ -name *.class` throws an 
+> error " find: invalid predicate `-H' " - Removing the -H flag, is rack.jar 
+> now some 186K rather than the original 384 bytes.
+
+We tried hard but couldn't reconstruct what that -H was once for. Now
+it's gone.
+
+> 
+> The java GUI fires up, now to get the TiMS subsystem running \o/.
+> 
+>> I copied some arch detections from RTnet to RACK. Let us know if this is
+>> already enough to get it compiling.
+> 
+> I see one possible problem - RACK_TARGET_ARCH needs to be "ppc", yet 
+> XENO_USER_ARCH returns "powerpc" - Changing the rack arch to "powerpc" causes 
+> the tims.ko compile to fail as kbuild can not resolve "powerpc" to "ppc".. 
+> Isn't autotools fun ;)
+
+It is... :-/
+
+> 
+> The obvious fix in my mind is to get xenomai to return "ppc", but would it 
+> break stuff for other groups.
+> 
+
+If the user prefers to shoot himself, he's now free to do so - check
+removed.
+
+Thanks again,
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060821/7b1d729e/attachment.pgp>
+

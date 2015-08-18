@@ -1,0 +1,40 @@
+From kiszka at rts.uni-hannover.de  Wed Jan 10 17:20:42 2007
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Wed, 10 Jan 2007 17:20:42 +0100
+Subject: [Rack-core] [ANNOUNCE] RACK 0.4.0 released
+Message-ID: <45A5125A.6040108@rts.uni-hannover.de>
+
+Basically, this is closing release for RACK over Xenomai 2.2 and
+earlier. We are ready to jump on 2.3, specifically adopting its CAN API.
+This step will drop support for older Xenomai versions in order to keep
+the code maintainable.
+
+Still, this release contains a number of fixes and enhancements over 0.3.0:
+
+- added datalogger module
+- generalised LadarSickCms3000 to Sick's S3xy family
+- support for applet-based GUI
+- unix'ified installation paths
+- kernel-less build (skip TIMS, only generate userland)
+- unified angles in Position2D/3D
+- extensible module naming for dependent sub-projects
+- fixed races in module application startup
+- support for strings as module parameters
+- uncountable cleanups, refactorings, and fixes
+
+Download is available at
+
+http://prdownload.berlios.de/rack/rack-0.4.0.tar.bz2
+
+As always, feedback is welcome!
+
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20070110/ff918db1/attachment.pgp>
+

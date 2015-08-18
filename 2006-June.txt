@@ -1,0 +1,38 @@
+From langenberg at rts.uni-hannover.de  Thu Jun  8 11:24:29 2006
+From: langenberg at rts.uni-hannover.de (Joerg Langenberg)
+Date: Thu, 08 Jun 2006 11:24:29 +0200
+Subject: [Rack-core] Automake template
+Message-ID: <4487ECCD.8090508@rts.uni-hannover.de>
+
+A new RACK automake template has been added to the svn repository.
+The projects created with this template depends on RACK directly (we
+call it 'level 1'  project).
+You can get it with:
+
+svn co svn://svn.berlios.de/rack/automake/level1
+
+Please have a look at the README files in the level1 root directory.
+
+J?rg
+
+
+
+From langenberg at rts.uni-hannover.de  Fri Jun  9 16:59:04 2006
+From: langenberg at rts.uni-hannover.de (Joerg Langenberg)
+Date: Fri, 09 Jun 2006 16:59:04 +0200
+Subject: [Rack-core] Automake template (level 2)
+Message-ID: <44898CB8.5000100@rts.uni-hannover.de>
+
+A new RACK (level 2) automake template has been added to the svn repository.
+The projects created with this template depends on RACK level 1 projects
+(we call it 'level 2' projects).
+You can get it with:
+
+svn co svn://svn.berlios.de/rack/automake/level2
+
+Please have a look at the README files in the level2 root directory.
+
+J?rg
+
+
+

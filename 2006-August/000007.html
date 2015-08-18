@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Rack-core] Compiling/running RACK on Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/rack-core/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Compiling/running%20RACK%20on%20Debian&In-Reply-To=%3C44E98BA7.7000509%40rts.uni-hannover.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Rack-core] Compiling/running RACK on Debian</H1>
+    <B>Jan Kiszka</B> 
+    <A HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Compiling/running%20RACK%20on%20Debian&In-Reply-To=%3C44E98BA7.7000509%40rts.uni-hannover.de%3E"
+       TITLE="[Rack-core] Compiling/running RACK on Debian">kiszka at rts.uni-hannover.de
+       </A><BR>
+    <I>Mon Aug 21 12:32:07 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000006.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+        <LI>Next message: <A HREF="000008.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Paul wrote:
+&gt;<i> Hi Folks (&amp; Jan in particular)
+</I>&gt;<i> 
+</I>&gt;<i> As per your suggestion, I checked out the trunk of SVN and proceeded to 
+</I>&gt;<i> compile &amp; install RACK - Noticed that the AC_INIT_MAKE does a check for AWK, 
+</I>&gt;<i> so one chunk of the patch I emailed earlier is redundant.. Attached, is an 
+</I>&gt;<i> updated one.
+</I>
+Thanks, merged.
+
+I also tried to address your concerns about uninstalling and cleaned up
+a duplicate installation of the map file at this chance. All committed
+to SVN now. It's heavily untested, so please give it a careful try. :)
+
+&gt;<i> 
+</I>&gt;<i>  Aside from the issues that the patch addresses, I'm getting an error:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/rack-core">paul at Babylon5</A>:/usr/local/rack/gui$ java -jar rack.jar gui.cfg
+</I>&gt;<i> Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: rack/gui/Gui
+</I>
+Did you enable CONFIG_RACK_JAVA_GUI? Oli just turned this to &quot;default y&quot;
+to make sure no one misses it.
+
+&gt;<i> 
+</I>&gt;<i> when trying to run the GUI example - I know very little about java in general, 
+</I>&gt;<i> and nothing about j2re-1.4.2 in particular (also have the j2sdk from 
+</I>&gt;<i> Blackdown installed). At a loss as to where to start debugging this, so any 
+</I>&gt;<i> pointers would be much appreciated.
+</I>
+Java 1.4 should not be the problem, some of our installations are based
+on it as well.
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards, Paul.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> P.S. After some brutal hacks to configure, managed to compile TiMS and a few 
+</I>&gt;<i> of the user space libraries on a powerpc (the java stuff didn't like kaffe).
+</I>
+I copied some arch detections from RTnet to RACK. Let us know if this is
+already enough to get it compiling.
+
+Thanks for all feedback,
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/rack-core/attachments/20060821/b08a3ff2/attachment.pgp">https://lists.berlios.de/pipermail/rack-core/attachments/20060821/b08a3ff2/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000006.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+	<LI>Next message: <A HREF="000008.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/rack-core">More information about the Rack-core
+mailing list</a><br>
+</body></html>

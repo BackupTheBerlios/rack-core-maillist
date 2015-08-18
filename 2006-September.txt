@@ -1,0 +1,33 @@
+From kiszka at rts.uni-hannover.de  Mon Sep  4 13:58:47 2006
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Mon, 04 Sep 2006 13:58:47 +0200
+Subject: [Rack-core] [PATCH] Update CAN port abstraction
+Message-ID: <44FC14F7.3060707@rts.uni-hannover.de>
+
+Hi,
+
+as a preview of the upcoming CAN changes, here is my current version of
+the new CAN port abstraction for RACK. It upgrades the interface to the
+revised Socket-CAN API that will be part of Xenomai 2.3 (currently
+trunk). Until this version has been released (may take some time
+according to our current roadmap), I will keep the patch unapplied in
+order to not break existing setups based on the older RT-SJA1000 driver
+by Sebastian.
+
+Nevertheless, people already interested in the new stack can give this
+patch a try. Don't forget to rebuild the makefiles with autogen.sh after
+applying it.
+
+Jan
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: rt-socket-can.patch
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060904/1f014ab3/attachment.ksh>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060904/1f014ab3/attachment.pgp>
+

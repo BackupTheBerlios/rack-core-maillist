@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Rack-core] Poor man's coding style check
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/rack-core/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Poor%20man%27s%20coding%20style%20check&In-Reply-To=%3C44607D5E.9020302%40rts.uni-hannover.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Rack-core] Poor man's coding style check</H1>
+    <B>Jan Kiszka</B> 
+    <A HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Poor%20man%27s%20coding%20style%20check&In-Reply-To=%3C44607D5E.9020302%40rts.uni-hannover.de%3E"
+       TITLE="[Rack-core] Poor man's coding style check">kiszka at rts.uni-hannover.de
+       </A><BR>
+    <I>Tue May  9 13:30:38 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000002.html">[Rack-core] Little bug fixed in hooks/pre-commit script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I've installed a simple check for our Windows-hosted developers: when
+checking in, an SVN hook script will now search for tabs (\t) and DOS
+line feed characters (\r) in any *.c, *.h, and *.cpp file of the
+commitment. When there are some, committing is rejected.
+
+As I already hear the complaints &quot;I only changed a single line, and now
+I cannot check this in quickly&quot;, there is an *emergency* by-pass
+available: embed the string &quot;[nostyle]&quot; in your commitment messages, and
+the hook will leave your changes alone.
+
+In case my script ever causes severe issues: rename the file
+/svnroot/repos/rack/hooks/pre-commit on svn.berlios.de to permanently
+disable this hook again. If there are further ideas what conventions to
+enforce this, just let me know.
+
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/rack-core/attachments/20060509/9b5d5821/attachment.pgp">https://lists.berlios.de/pipermail/rack-core/attachments/20060509/9b5d5821/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000002.html">[Rack-core] Little bug fixed in hooks/pre-commit script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/rack-core">More information about the Rack-core
+mailing list</a><br>
+</body></html>

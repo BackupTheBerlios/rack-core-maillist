@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Rack-core] Compiling/running RACK on Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/rack-core/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Compiling/running%20RACK%20on%20Debian&In-Reply-To=%3C44E9B3CB.1050808%40rts.uni-hannover.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Rack-core] Compiling/running RACK on Debian</H1>
+    <B>Jan Kiszka</B> 
+    <A HREF="mailto:rack-core%40lists.berlios.de?Subject=Re%3A%20%5BRack-core%5D%20Compiling/running%20RACK%20on%20Debian&In-Reply-To=%3C44E9B3CB.1050808%40rts.uni-hannover.de%3E"
+       TITLE="[Rack-core] Compiling/running RACK on Debian">kiszka at rts.uni-hannover.de
+       </A><BR>
+    <I>Mon Aug 21 15:23:23 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Paul wrote:
+&gt;<i> Hi Jan
+</I>&gt;<i> 
+</I>&gt;<i> On Monday 21 August 2006 11:32, Jan Kiszka wrote:
+</I>&gt;&gt;<i> I also tried to address your concerns about uninstalling and cleaned up
+</I>&gt;&gt;<i> a duplicate installation of the map file at this chance. All committed
+</I>&gt;&gt;<i> to SVN now. It's heavily untested, so please give it a careful try. :)
+</I>&gt;<i> 
+</I>&gt;<i> A small typo in the uninstall-local, but once fixed (patch attached), 
+</I>&gt;<i> uninstall removed all the files. Still leaves a whole bunch of empty 
+</I>&gt;<i> directories, but that isn't a high priority - `rm -fR /usr/local/rack` cleans 
+</I>&gt;<i> it out for me ;)
+</I>
+Ah, yeah. The directory stuff will be addressed once we restructure the
+installation (then most dirs will be common, thus undeletable anyway).
+
+&gt;<i> 
+</I>&gt;<i> Side note: I found some shells to be picky about spaces either side of a 
+</I>&gt;<i> semicolon when used as a delimiter.
+</I>
+Already tried to build RTnet on some of those systems? I wonder if it
+suffers from that as well...
+
+&gt;<i> 
+</I>&gt;&gt;<i> Did you enable CONFIG_RACK_JAVA_GUI? Oli just turned this to &quot;default y&quot;
+</I>&gt;&gt;<i> to make sure no one misses it.
+</I>&gt;<i> 
+</I>&gt;<i> All the java options are enabled - Digging a little deeper, I found the 
+</I>&gt;<i> problem. In the rack.jar target, `find -H rack/ -name *.class` throws an 
+</I>&gt;<i> error &quot; find: invalid predicate `-H' &quot; - Removing the -H flag, is rack.jar 
+</I>&gt;<i> now some 186K rather than the original 384 bytes.
+</I>
+We tried hard but couldn't reconstruct what that -H was once for. Now
+it's gone.
+
+&gt;<i> 
+</I>&gt;<i> The java GUI fires up, now to get the TiMS subsystem running \o/.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I copied some arch detections from RTnet to RACK. Let us know if this is
+</I>&gt;&gt;<i> already enough to get it compiling.
+</I>&gt;<i> 
+</I>&gt;<i> I see one possible problem - RACK_TARGET_ARCH needs to be &quot;ppc&quot;, yet 
+</I>&gt;<i> XENO_USER_ARCH returns &quot;powerpc&quot; - Changing the rack arch to &quot;powerpc&quot; causes 
+</I>&gt;<i> the tims.ko compile to fail as kbuild can not resolve &quot;powerpc&quot; to &quot;ppc&quot;.. 
+</I>&gt;<i> Isn't autotools fun ;)
+</I>
+It is... :-/
+
+&gt;<i> 
+</I>&gt;<i> The obvious fix in my mind is to get xenomai to return &quot;ppc&quot;, but would it 
+</I>&gt;<i> break stuff for other groups.
+</I>&gt;<i> 
+</I>
+If the user prefers to shoot himself, he's now free to do so - check
+removed.
+
+Thanks again,
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/rack-core/attachments/20060821/7b1d729e/attachment.pgp">https://lists.berlios.de/pipermail/rack-core/attachments/20060821/7b1d729e/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[Rack-core] Compiling/running RACK on Debian
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/rack-core">More information about the Rack-core
+mailing list</a><br>
+</body></html>

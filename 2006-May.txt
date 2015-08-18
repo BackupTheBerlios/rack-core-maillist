@@ -1,0 +1,90 @@
+From kiszka at rts.uni-hannover.de  Tue May  9 13:30:38 2006
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Tue, 09 May 2006 13:30:38 +0200
+Subject: [Rack-core] Poor man's coding style check
+Message-ID: <44607D5E.9020302@rts.uni-hannover.de>
+
+Hi all,
+
+I've installed a simple check for our Windows-hosted developers: when
+checking in, an SVN hook script will now search for tabs (\t) and DOS
+line feed characters (\r) in any *.c, *.h, and *.cpp file of the
+commitment. When there are some, committing is rejected.
+
+As I already hear the complaints "I only changed a single line, and now
+I cannot check this in quickly", there is an *emergency* by-pass
+available: embed the string "[nostyle]" in your commitment messages, and
+the hook will leave your changes alone.
+
+In case my script ever causes severe issues: rename the file
+/svnroot/repos/rack/hooks/pre-commit on svn.berlios.de to permanently
+disable this hook again. If there are further ideas what conventions to
+enforce this, just let me know.
+
+Jan
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060509/9b5d5821/attachment.pgp>
+
+From joerg at langenberg-home.de  Tue May  9 14:37:29 2006
+From: joerg at langenberg-home.de (Joerg Langenberg)
+Date: Tue, 09 May 2006 14:37:29 +0200
+Subject: [Rack-core] Little bug fixed in hooks/pre-commit script
+Message-ID: <44608D09.5060902@langenberg-home.de>
+
+The first version of the pre-commit script rejects all checkins in spite
+of correct source code:
+
+svn: 'pre-commit' hook failed with error output:
+File(s) that did not pass coding style test:
+ERROR: 0 file(s) rejected. Reformat your code!
+
+Now the script accept the code: ;-)
+    Transmitting file data ...
+    Committed revision 43.
+
+
+J?rg
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 249 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060509/c9c9104c/attachment.pgp>
+
+From kiszka at rts.uni-hannover.de  Mon May 22 17:23:14 2006
+From: kiszka at rts.uni-hannover.de (Jan Kiszka)
+Date: Mon, 22 May 2006 17:23:14 +0200
+Subject: [Rack-core] OpenGrok cross-reference
+Message-ID: <4471D762.1010707@rts.uni-hannover.de>
+
+Hi,
+
+I've just set up an OpenGrok cross-reference for current RACK revision #76:
+
+http://www.rts.uni-hannover.de:8080/rack-trunk
+
+This is experimental and does not get updated regularly yet.
+
+Actually, I'm still struggling to find an overall migration concept for
+all the projects we have via lxr on our site so far. Will keep you posted.
+
+Jan
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 250 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/rack-core/attachments/20060522/e3b502a8/attachment.pgp>
+
